@@ -8,7 +8,7 @@ on:
         description: USERNAME - The name of the user dispacthing the workflow
 
 env:
-  USERNAME: ${{ github.event.input.username }}
+  USERNAME: ${{ github.event.inputs.username }}
 
 jobs:
   check-bats-version:
