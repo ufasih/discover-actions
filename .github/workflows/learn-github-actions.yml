@@ -1,6 +1,15 @@
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+on:
+  workflow-dispatch:
+    inputs:
+      username:
+        type: string
+        description: USERNAME - The name of the user dispacthing the workflow
+
+env:
+  USERNAME: ${{ github.event.input.username }}
+
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
@@ -11,3 +20,4 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
+      - run: echo "Hello $USERNAME"
