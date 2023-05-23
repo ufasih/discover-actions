@@ -1,7 +1,7 @@
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
-  workflow-dispatch:
+  workflow_dispatch:
     inputs:
       username:
         type: string
