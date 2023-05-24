@@ -9,6 +9,7 @@ on:
 
 env:
   USERNAME: ${{ github.event.inputs.username }}
+  SUPER_DUPER_SECRETY_SECRET: ${{ secrets.SUPER_DUPER_SECRETY_SECRET }}
 
 jobs:
   check-bats-version:
@@ -21,4 +22,4 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
       - run: echo "Hello $USERNAME"
-      - run: echo ${{ secrets.SUPER_DUPER_SECRETY_SECRET }}
+      - run: echo "$SUPER_DUPER_SECRETY_SECRET"
