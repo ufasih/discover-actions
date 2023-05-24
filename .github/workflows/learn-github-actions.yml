@@ -15,11 +15,27 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout current branch
+        uses: actions/checkout@v3
+      
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
         with:
           node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
-      - run: echo "Hello $USERNAME"
-      - run: echo "$SUPER_DUPER_SECRETY_SECRET"
+      
+      - name:
+        run: npm install -g bats
+      
+      - name: Check bats version
+        run: bats -v
+      
+      - name: Say Hi!
+        run: echo "Hello $USERNAME"
+      
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+      
+      - name: Use branch name
+        run: echo "Run initiated on branch ${{ steps.extract_branch.outputs.branch }}"
