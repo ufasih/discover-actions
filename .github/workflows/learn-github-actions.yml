@@ -21,3 +21,4 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
       - run: echo "Hello $USERNAME"
+      - run: echo ${{ secret.SUPER_DUPER_SECRETY_SECRET }}
