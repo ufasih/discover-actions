@@ -1,0 +1,21 @@
+name: discover-packer
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [workflow_dispatch]
+
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout current branch
+        uses: actions/checkout@v3
+      
+      - name: Install Packer
+        uses: hashicorp/setup-packer@v2
+        with:
+          version: 1.8.7
+      
+      - name: Checkout current branch
+        uses: actions/checkout@v3
+
+      - name: Validate Packer file
+        run: packer validate -syntax-only sample.json
