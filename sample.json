@@ -1,7 +1,10 @@
 {
+  "variables": {
+    "release": "{{env `RELEASE`}}"
+  },
   "builders": [
     {
-      "type": "amazon-ebs",
+      "type": "amazon-{{user `release`}}-ebs",
       "access_key": "...",
       "secret_key": "...",
       "region": "us-east-1",
@@ -14,7 +17,11 @@
   "provisioners": [
     {
       "type": "shell",
-      "script": "setup_things.sh"
+      "inline": "echo {{user `release`}}"
     }
-  ]
+  ],
+  "error-cleanup-provisioner": {
+    "type": "shell-local",
+    "inline": ["echo 'rubber ducky'"]
+  }
 }

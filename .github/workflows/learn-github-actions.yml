@@ -10,6 +10,7 @@ on:
 env:
   USERNAME: ${{ github.event.inputs.username }}
   SUPER_DUPER_SECRETY_SECRET: ${{ secrets.SUPER_DUPER_SECRETY_SECRET }}
+  RELEASE: r2023b
 
 jobs:
   check-bats-version:
