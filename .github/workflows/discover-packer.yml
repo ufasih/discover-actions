@@ -1,7 +1,8 @@
 name: discover-packer
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [workflow_dispatch]
-
+env:
+  RELEASE: r2023b
 jobs:
   check-packer:
     runs-on: ubuntu-20.04
